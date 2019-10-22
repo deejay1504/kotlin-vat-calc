@@ -4,7 +4,7 @@
 
 <body>
 
-<h2>Owner</h2>
+<h2>Vat Calculator</h2>
 <form th:object="${vat}" class="form-horizontal" id="add-owner-form" method="post">
     <div class="form-group has-feedback">
         <table class="table table-striped">
@@ -21,6 +21,11 @@
             <tbody>
             <tr th:each="vatLine : ${vatDetails.vatList}">
                 <td th:text="${vatLine.monthAndYear}"></td>
+                <td th:text="${vatLine.numberOfDays}"></td>
+                <td th:text="${vatLine.dailyRate}"></td>
+                <td th:text="${vatLine.netAmount}"></td>
+                <td th:text="${vatLine.vatAmount}"></td>
+                <td th:text="${vatLine.grossAmount}"></td>
             </tr>
             </tbody>
         </table>
@@ -32,7 +37,7 @@
                 -->
     </div>
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-10">
             <button type="submit" class="btn btn-default">Calculate</button>
         </div>
     </div>

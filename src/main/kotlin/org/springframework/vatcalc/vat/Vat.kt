@@ -1,20 +1,16 @@
 package org.springframework.vatcalc.vat
 
-import javax.validation.constraints.NotEmpty
-
 class Vat () {
     var monthAndYear = ""
 
-    @NotEmpty
-    var numberOfDays = ""
+    var numberOfDays = 0
 
-    @NotEmpty
-    var dailyRate = ""
+    var dailyRate = 0.00
 
-    var netAmount = ""
+    var netAmount = 0.00
 
-    var vatAmount = ""
+    var vatAmount = 0.00
 
-    var grossAmount = ""
+    var grossAmount = 0.00
 
 }
