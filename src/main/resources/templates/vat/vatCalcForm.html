@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+
+<h2>Owner</h2>
+<form th:object="${vat}" class="form-horizontal" id="add-owner-form" method="post">
+    <div class="form-group has-feedback">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Month / Year</th>
+                    <th>Number of Days</th>
+                    <th>Daily Rate</th>
+                    <th>Net Amount</th>
+                    <th>VAT @ 20%</th>
+                    <th>Gross Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vatLine : ${vatDetails.vatList}">
+                <td th:text="${vatLine.monthAndYear}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <!--
+        <input
+                th:replace="~{fragments/inputField :: input ('Number of Days', 'numberOfDays', 'text')}" />
+        <input
+                th:replace="~{fragments/inputField :: input ('Daily Rate', 'dailyRate', 'text')}" />
+                -->
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Calculate</button>
+        </div>
+    </div>
+</form>
+
+</body>
+
+</html>
