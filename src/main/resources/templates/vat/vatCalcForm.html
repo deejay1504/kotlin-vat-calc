@@ -5,13 +5,13 @@
 <body>
 
 <h2>Vat Calculator</h2>
-<form th:object="${vat}" class="form-horizontal" id="add-owner-form" method="post">
+<form th:object="${vatDetailsForm}" class="form-horizontal" id="add-owner-form" th:action="@{/vatcalc}" method="post">
     <div class="form-group has-feedback">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Month / Year</th>
-                    <th>Number of Days</th>
+                    <th width="16%">Number of Days</th>
                     <th>Daily Rate</th>
                     <th>Net Amount</th>
                     <th>VAT @ 20%</th>
@@ -19,14 +19,52 @@
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="vatLine : ${vatDetails.vatList}">
-                <td th:text="${vatLine.monthAndYear}"></td>
-                <td th:text="${vatLine.numberOfDays}"></td>
+            <tr th:each="vat, itemStat : *{vatList}">
+                <td><input th:field="*{vatList[__${itemStat.index}__].monthAndYear}" /></td>
+                <!-- Maximum value of 31 days -->
+                <td><input th:field="*{vatList[__${itemStat.index}__].numberOfDays}" th:max="31" /></td>
+                <td><input th:field="*{vatList[__${itemStat.index}__].dailyRate}" /></td>
+                <td><input th:field="*{vatList[__${itemStat.index}__].netAmount}" /></td>
+                <td><input th:field="*{vatList[__${itemStat.index}__].vatAmount}"  /></td>
+                <td><input th:field="*{vatList[__${itemStat.index}__].grossAmount}" /></td>
+            </tr>
+            <!--
+            <tr th:each="vat, iteration : ${vatDetailsForm.vatList}">
+                <td th:text="${vat.monthAndYear}"></td>
+                <td th:text="${vat.numberOfDays}">
+
+                    <input class="form-control" th:type="number" th:max="31"
+                           th:text="${vat.numberOfDays}" />
+                </td>
+
+                <td>
+                    <input class="form-control"
+                           th:field="*{vat[__${iteration.index}__].dailyRate}"
+                           th:text="*{vat[__${iteration.index}__].dailyRate}">
+                </td>
+                <td>
+                    <input class="form-control"
+                           th:field="*{vat[__${iteration.index}__].netAmount}"
+                           th:text="*{vat[__${iteration.index}__].netAmount}">
+                </td>
+                <td>
+                    <input class="form-control"
+                           th:field="*{vat[__${iteration.index}__].vatAmount}"
+                           th:text="*{vat[__${iteration.index}__].vatAmount}">
+                </td>
+                <td>
+                    <input class="form-control"
+                           th:field="*{vat[__${iteration.index}__].grossAmount}"
+                           th:text="*{vat[__${iteration.index}__].grossAmount}">
+                </td>
+
                 <td th:text="${vatLine.dailyRate}"></td>
                 <td th:text="${vatLine.netAmount}"></td>
                 <td th:text="${vatLine.vatAmount}"></td>
                 <td th:text="${vatLine.grossAmount}"></td>
+
             </tr>
+             -->
             </tbody>
         </table>
         <!--

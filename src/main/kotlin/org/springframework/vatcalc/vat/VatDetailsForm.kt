@@ -18,4 +18,7 @@ package org.springframework.vatcalc.vat
 /**
  * Simple domain object representing a list of vat items.
  */
-data class VatDetails(var vatList: Collection<Vat>? = null)
+class VatDetailsForm {
+
+    var vatList: List<Vat>? = null
+}

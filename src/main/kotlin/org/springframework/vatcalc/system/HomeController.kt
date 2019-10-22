@@ -16,8 +16,11 @@
 package org.springframework.vatcalc.system
 
 import org.springframework.stereotype.Controller
+import org.springframework.validation.BindingResult
 import org.springframework.vatcalc.service.VatService
+import org.springframework.vatcalc.vat.VatDetailsForm
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class HomeController(private val vatService: VatService) {
@@ -27,7 +30,15 @@ class HomeController(private val vatService: VatService) {
     @GetMapping("/")
     fun welcome(model: MutableMap<String, Any>): String {
 
-        model["vatDetails"] = vatService.createVatDetails()
+        model["vatDetailsForm"] = vatService.createVatDetails()
+
+        return VIEWS_VAT_CALC__FORM
+    }
+
+    @PostMapping("/vatcalc")
+    fun vatCalculator(vatDetailsForm: VatDetailsForm, result: BindingResult, model: MutableMap<String, Any>): String {
+
+//        model["vatDetails"] = vatService.createVatDetails()
 
         return VIEWS_VAT_CALC__FORM
     }

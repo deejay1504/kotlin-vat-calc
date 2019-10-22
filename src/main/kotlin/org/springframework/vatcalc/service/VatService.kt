@@ -2,12 +2,12 @@ package org.springframework.vatcalc.service
 
 import org.springframework.stereotype.Service
 import org.springframework.vatcalc.vat.Vat
-import org.springframework.vatcalc.vat.VatDetails
+import org.springframework.vatcalc.vat.VatDetailsForm
 
 @Service
 class VatService {
 
-    fun createVatDetails(): VatDetails {
+    fun createVatDetails(): VatDetailsForm {
         var vatRow1 = Vat()
         var vatRow2 = Vat()
         var vatRow3 = Vat()
@@ -21,7 +21,10 @@ class VatService {
         vatList.add(vatRow2)
         vatList.add(vatRow3)
 
-        return VatDetails(vatList)
+        var vatDetailsForm = VatDetailsForm()
+        vatDetailsForm.vatList = vatList
+
+        return vatDetailsForm
     }
 
 }
