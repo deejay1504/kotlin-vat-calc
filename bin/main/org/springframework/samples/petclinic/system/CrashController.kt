@@ -29,10 +29,10 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class CrashController {
 
-    @GetMapping("/oups")
+    @GetMapping("/error")
     fun triggerException() {
         throw RuntimeException(
-                "Expected: controller used to showcase what happens when an exception is thrown")
+                "Expected: you clicked on the 'Error' button - no problem!")
     }
 
 }

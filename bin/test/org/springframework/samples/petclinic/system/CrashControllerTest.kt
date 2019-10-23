@@ -25,7 +25,7 @@ class CrashControllerTest {
 
     @Test
     fun testTriggerException() {
-        mockMvc.perform(get("/oups"))
+        mockMvc.perform(get("/error"))
                 .andExpect(view().name("error"))
                 .andExpect(model().attributeExists("error"))
                 .andExpect(content().string(containsString("Whitelabel Error Page")))
