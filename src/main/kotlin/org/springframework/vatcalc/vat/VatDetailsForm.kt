@@ -22,7 +22,7 @@ class VatDetailsForm {
 
     var vatList: List<Vat>? = null
 
-    var totalGrossAmount: Double = 0.00
+    var totalGrossAmount = "%.2f".format(0.00)
 
-    var outputVat: Double = 0.00
+    var outputVat = "%.2f".format(0.00)
 }

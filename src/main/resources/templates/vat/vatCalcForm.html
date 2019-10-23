@@ -11,12 +11,12 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Month / Year</th>
-                    <th width="16%">Number of Days</th>
-                    <th>Daily Rate</th>
-                    <th>Net Amount</th>
-                    <th>VAT @ 20%</th>
-                    <th>Gross Amount</th>
+                    <th class="text-center">Month / Year</th>
+                    <th class="text-center" width="16%">Number of Days</th>
+                    <th class="text-center">Daily Rate (£)</th>
+                    <th class="text-center">Net Amount (£)</th>
+                    <th class="text-center">VAT @ 20%</th>
+                    <th class="text-center">Gross Amount (£)</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,10 +24,10 @@
                     <td><input th:field="*{vatList[__${itemStat.index}__].monthAndYear}" th:readonly="readonly" /></td>
                     <!-- Maximum value of 31 days -->
                     <td><input th:field="*{vatList[__${itemStat.index}__].numberOfDays}" th:max="31" /></td>
-                    <td><input th:field="*{vatList[__${itemStat.index}__].dailyRate}" /></td>
-                    <td><input th:field="*{vatList[__${itemStat.index}__].netAmount}" th:readonly="readonly" /></td>
-                    <td><input th:field="*{vatList[__${itemStat.index}__].vatAmount}"  th:readonly="readonly" /></td>
-                    <td><input th:field="*{vatList[__${itemStat.index}__].grossAmount}" th:readonly="readonly" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].dailyRate}" class="text-right" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].netAmount}"   th:readonly="readonly" class="text-right" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].vatAmount}"   th:readonly="readonly" class="text-right" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].grossAmount}" th:readonly="readonly" class="text-right" /></td>
                 </tr>
             </tbody>
         </table>
@@ -39,21 +39,21 @@
                     <col style="width: 17%" />
                 </colgroup>
                 <tr>
-                    <td style="text-align: right"><b>Net outputs (Box 6)</b></td>
-                    <td style="text-align: right">
+                    <td class="text-right"><b>Net outputs (Box 6)</b></td>
+                    <td>
                         <table>
                             <tr>
-                                <td><b><input th:field="${vatDetailsForm.totalGrossAmount}" th:readonly="readonly" /></b></td>
+                                <td><b><input class="text-right" th:field="${vatDetailsForm.totalGrossAmount}" th:readonly="readonly" /></b></td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align: right"><b>Output VAT 17.5% (Boxes 1 and 3)</b></td>
-                    <td style="text-align: right">
+                    <td class="text-right"><b>Output VAT 17.5% (Boxes 1 and 3)</b></td>
+                    <td>
                         <table>
                             <tr>
-                                <td><b><input th:field="${vatDetailsForm.outputVat}" th:readonly="readonly" /></b></td>
+                                <td><b><input class="text-right" th:field="${vatDetailsForm.outputVat}" th:readonly="readonly" /></b></td>
                             </tr>
                         </table>
                     </td>

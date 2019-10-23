@@ -37,17 +37,21 @@ class VatService {
             vatRow.monthAndYear = it.monthAndYear
             vatRow.numberOfDays = it.numberOfDays
             vatRow.dailyRate    = it.dailyRate
-            vatRow.netAmount    = it.dailyRate * it.numberOfDays
-            vatRow.vatAmount    = vatRow.netAmount * 0.20
-            vatRow.grossAmount  = vatRow.netAmount + vatRow.vatAmount
-            totalGrossAmount   += vatRow.grossAmount
+            var dailyRate       = it.dailyRate.toDouble();
+            var netAmount       = dailyRate * it.numberOfDays
+            var vatAmount       = netAmount * 0.20
+            var grossAmount     = netAmount + vatAmount
+            vatRow.netAmount    = "%.2f".format(netAmount)
+            vatRow.vatAmount    = "%.2f".format(vatAmount)
+            vatRow.grossAmount  = "%.2f".format(grossAmount)
+            totalGrossAmount   += grossAmount
             vatList.add(vatRow)
         }
 
         var returnVatDetailsForm = VatDetailsForm()
         returnVatDetailsForm.vatList = vatList
-        returnVatDetailsForm.totalGrossAmount = totalGrossAmount
-        returnVatDetailsForm.outputVat = totalGrossAmount * 0.175
+        returnVatDetailsForm.totalGrossAmount = "%.2f".format(totalGrossAmount)
+        returnVatDetailsForm.outputVat = "%.2f".format(totalGrossAmount * 0.175)
 
         return returnVatDetailsForm
     }
