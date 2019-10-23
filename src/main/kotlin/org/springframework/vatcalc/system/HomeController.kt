@@ -38,7 +38,7 @@ class HomeController(private val vatService: VatService) {
     @PostMapping("/vatcalc")
     fun vatCalculator(vatDetailsForm: VatDetailsForm, result: BindingResult, model: MutableMap<String, Any>): String {
 
-//        model["vatDetails"] = vatService.createVatDetails()
+        model["vatDetailsForm"] = vatService.calculateVat(vatDetailsForm)
 
         return VIEWS_VAT_CALC__FORM
     }

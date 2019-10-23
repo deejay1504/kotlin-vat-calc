@@ -6,6 +6,7 @@
 
 <h2>Vat Calculator</h2>
 <form th:object="${vatDetailsForm}" class="form-horizontal" id="add-owner-form" th:action="@{/vatcalc}" method="post">
+
     <div class="form-group has-feedback">
         <table class="table table-striped">
             <thead>
@@ -19,62 +20,46 @@
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="vat, itemStat : *{vatList}">
-                <td><input th:field="*{vatList[__${itemStat.index}__].monthAndYear}" th:readonly="readonly" /></td>
-                <!-- Maximum value of 31 days -->
-                <td><input th:field="*{vatList[__${itemStat.index}__].numberOfDays}" th:max="31" /></td>
-                <td><input th:field="*{vatList[__${itemStat.index}__].dailyRate}" /></td>
-                <td><input th:field="*{vatList[__${itemStat.index}__].netAmount}" /></td>
-                <td><input th:field="*{vatList[__${itemStat.index}__].vatAmount}"  /></td>
-                <td><input th:field="*{vatList[__${itemStat.index}__].grossAmount}" /></td>
-            </tr>
-            <!--
-            <tr th:each="vat, iteration : ${vatDetailsForm.vatList}">
-                <td th:text="${vat.monthAndYear}"></td>
-                <td th:text="${vat.numberOfDays}">
-
-                    <input class="form-control" th:type="number" th:max="31"
-                           th:text="${vat.numberOfDays}" />
-                </td>
-
-                <td>
-                    <input class="form-control"
-                           th:field="*{vat[__${iteration.index}__].dailyRate}"
-                           th:text="*{vat[__${iteration.index}__].dailyRate}">
-                </td>
-                <td>
-                    <input class="form-control"
-                           th:field="*{vat[__${iteration.index}__].netAmount}"
-                           th:text="*{vat[__${iteration.index}__].netAmount}">
-                </td>
-                <td>
-                    <input class="form-control"
-                           th:field="*{vat[__${iteration.index}__].vatAmount}"
-                           th:text="*{vat[__${iteration.index}__].vatAmount}">
-                </td>
-                <td>
-                    <input class="form-control"
-                           th:field="*{vat[__${iteration.index}__].grossAmount}"
-                           th:text="*{vat[__${iteration.index}__].grossAmount}">
-                </td>
-
-                <td th:text="${vatLine.dailyRate}"></td>
-                <td th:text="${vatLine.netAmount}"></td>
-                <td th:text="${vatLine.vatAmount}"></td>
-                <td th:text="${vatLine.grossAmount}"></td>
-
-            </tr>
-             -->
+                <tr th:each="vat, itemStat : *{vatList}">
+                    <td><input th:field="*{vatList[__${itemStat.index}__].monthAndYear}" th:readonly="readonly" /></td>
+                    <!-- Maximum value of 31 days -->
+                    <td><input th:field="*{vatList[__${itemStat.index}__].numberOfDays}" th:max="31" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].dailyRate}" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].netAmount}" th:readonly="readonly" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].vatAmount}"  th:readonly="readonly" /></td>
+                    <td><input th:field="*{vatList[__${itemStat.index}__].grossAmount}" th:readonly="readonly" /></td>
+                </tr>
             </tbody>
         </table>
-        <!--
-        <input
-                th:replace="~{fragments/inputField :: input ('Number of Days', 'numberOfDays', 'text')}" />
-        <input
-                th:replace="~{fragments/inputField :: input ('Daily Rate', 'dailyRate', 'text')}" />
-                -->
-    </div>
-    <div class="form-group">
+
+        <table class="table">
+            <tbody>
+                <colgroup>
+                    <col style="width: 83%" />
+                    <col style="width: 17%" />
+                </colgroup>
+                <tr>
+                    <td style="text-align: right"><b>Net outputs (Box 6)</b></td>
+                    <td style="text-align: right">
+                        <table>
+                            <tr>
+                                <td><b><input th:field="${vatDetailsForm.totalGrossAmount}" th:readonly="readonly" /></b></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><b>Output VAT 17.5% (Boxes 1 and 3)</b></td>
+                    <td style="text-align: right">
+                        <table>
+                            <tr>
+                                <td><b><input th:field="${vatDetailsForm.outputVat}" th:readonly="readonly" /></b></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <div class="col-sm-10">
             <button type="submit" class="btn btn-default">Calculate</button>
         </div>

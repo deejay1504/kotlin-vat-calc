@@ -21,4 +21,8 @@ package org.springframework.vatcalc.vat
 class VatDetailsForm {
 
     var vatList: List<Vat>? = null
+
+    var totalGrossAmount: Double = 0.00
+
+    var outputVat: Double = 0.00
 }
