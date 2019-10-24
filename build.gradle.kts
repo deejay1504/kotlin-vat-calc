@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
-project.description = "Kotlin version of the Spring Petclinic application"
+project.description = "VAT Calculator using Kotlin"
 project.group = "org.springframework.samples"
 // Align with Spring Version
 project.version = "2.2.0.M4"
@@ -18,6 +18,7 @@ plugins {
 val boostrapVersion = "3.3.6"
 val jQueryVersion = "2.2.4"
 val jQueryUIVersion = "1.11.4"
+val dockerPluginVersion = "3.0.3"
 
 tasks {
     withType<KotlinCompile> {
@@ -52,6 +53,7 @@ dependencies {
     implementation("org.webjars:jquery:$jQueryVersion")
     implementation("org.webjars:jquery-ui:$jQueryUIVersion")
     implementation("org.webjars:bootstrap:$boostrapVersion")
+    implementation("com.bmuschko:gradle-docker-plugin:$dockerPluginVersion")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
@@ -66,7 +68,7 @@ dependencies {
 
 jib {
     to {
-        image = "springcommunity/spring-petclinic-kotlin"
+        image = "gcr.io/gke-cluster-121174/kotlin-vat-calc"
         tags = setOf(project.version.toString(), "latest")
     }
 }

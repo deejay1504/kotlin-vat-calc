@@ -4,11 +4,11 @@
     var monthlist = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
     window.onload = function() {
-
         var greeting =  getTodaysDate() + ' - ' + getGreeting() + "!";
         $('#dateHeading').text(greeting);
         setCurrentQuarter();
     }
+
 
     function getTodaysDate() {
       var today = new Date();
@@ -38,7 +38,7 @@
     }
 
     function setCurrentQuarter() {
-        var currentQuarter = $("#currentQuarter").val();
+        var currentQuarter = $("#currentQuarterId").val();
         var today = new Date();
         var year = today.getFullYear();
         var startMonth = 0;

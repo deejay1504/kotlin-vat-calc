@@ -9,7 +9,7 @@
 
 <form th:object="${vatDetailsForm}" class="form-horizontal" id="add-owner-form" th:action="@{/vatcalc}" method="post">
 
-    <select th:id="currentQuarter" th:field="*{currentQuarter}" onchange="setCurrentQuarter();">
+    <select th:id="currentQuarterId" th:field="*{currentQuarter}" onchange="setCurrentQuarter();">
         <option th:value="1">Quarter 1</option>
         <option th:value="2">Quarter 2</option>
         <option th:value="3">Quarter 3</option>
