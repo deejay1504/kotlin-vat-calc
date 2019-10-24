@@ -8,18 +8,10 @@ import org.springframework.vatcalc.vat.VatDetailsForm
 class VatService {
 
     fun createVatDetails(): VatDetailsForm {
-        var vatRow1 = Vat()
-        var vatRow2 = Vat()
-        var vatRow3 = Vat()
-
-        vatRow1.monthAndYear = "Jan 2019"
-        vatRow2.monthAndYear = "Feb 2019"
-        vatRow3.monthAndYear = "Mar 2019"
-
         var vatList: ArrayList<Vat> = ArrayList<Vat>()
-        vatList.add(vatRow1)
-        vatList.add(vatRow2)
-        vatList.add(vatRow3)
+        vatList.add(Vat())
+        vatList.add(Vat())
+        vatList.add(Vat())
 
         var vatDetailsForm = VatDetailsForm()
         vatDetailsForm.vatList = vatList
@@ -49,6 +41,7 @@ class VatService {
         }
 
         var returnVatDetailsForm = VatDetailsForm()
+        returnVatDetailsForm.currentQuarter = vatDetailsForm.currentQuarter
         returnVatDetailsForm.vatList = vatList
         returnVatDetailsForm.totalGrossAmount = "%.2f".format(totalGrossAmount)
         returnVatDetailsForm.outputVat = "%.2f".format(totalGrossAmount * 0.175)

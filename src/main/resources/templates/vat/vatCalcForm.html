@@ -6,17 +6,17 @@
 
 <h2>Vat Calculator</h2>
 
-<select id="quarter" name="quarter" onchange="setQuarter(this);">
-    <option value="1">Quarter 1</option>
-    <option value="2">Quarter 2</option>
-    <option value="3">Quarter 3</option>
-    <option value="4">Quarter 4</option>
-</select>
-
-<br/><br/>
 
 <form th:object="${vatDetailsForm}" class="form-horizontal" id="add-owner-form" th:action="@{/vatcalc}" method="post">
 
+    <select th:id="currentQuarter" th:field="*{currentQuarter}" onchange="setCurrentQuarter();">
+        <option th:value="1">Quarter 1</option>
+        <option th:value="2">Quarter 2</option>
+        <option th:value="3">Quarter 3</option>
+        <option th:value="4">Quarter 4</option>
+    </select>
+
+    <br/><br/>
     <div class="form-group has-feedback">
         <table class="table table-striped">
             <thead>

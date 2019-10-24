@@ -7,8 +7,7 @@
 
         var greeting =  getTodaysDate() + ' - ' + getGreeting() + "!";
         $('#dateHeading').text(greeting);
-        setQuarter(1);
-
+        setCurrentQuarter();
     }
 
     function getTodaysDate() {
@@ -38,18 +37,19 @@
         }
     }
 
-    function setQuarter(selection) {
+    function setCurrentQuarter() {
+        var currentQuarter = $("#currentQuarter").val();
         var today = new Date();
         var year = today.getFullYear();
         var startMonth = 0;
         var endMonth   = 2;
-        if (selection.value == 2) {
+        if (currentQuarter == 2) {
             startMonth = 3;
             endMonth   = 5;
-        } else if (selection.value == 3) {
+        } else if (currentQuarter == 3) {
             startMonth = 6;
             endMonth   = 8;
-        } else if (selection.value == 4) {
+        } else if (currentQuarter == 4) {
             startMonth = 9;
             endMonth   = 11;
         }

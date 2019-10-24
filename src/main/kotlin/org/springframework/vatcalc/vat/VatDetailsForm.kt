@@ -20,6 +20,8 @@ package org.springframework.vatcalc.vat
  */
 class VatDetailsForm {
 
+    var currentQuarter = 1
+
     var vatList: List<Vat>? = null
 
     var totalGrossAmount = "%.2f".format(0.00)
