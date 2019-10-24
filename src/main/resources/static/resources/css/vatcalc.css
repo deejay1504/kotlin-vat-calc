@@ -7057,3 +7057,9 @@ table td.action-column {
 hr {
   border-top: 1px dotted #34302D;
 }
+.dateHeading {
+    float: left;
+    padding-top: 30px;
+    padding-left: 140px;
+    color: #FFFFFF;
+}
