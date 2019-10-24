@@ -1,5 +1,8 @@
 //<![CDATA[
 
+    // Public constants
+    var monthlist = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
     window.onload = function() {
 
         var greeting =  getTodaysDate() + ' - ' + getGreeting() + "!";
@@ -12,7 +15,6 @@
       var today = new Date();
       var day = today.getDay();
       var daylist = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-      var monthlist = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
       var minutes = today.getMinutes();
       minutes = (minutes < 10) ? '0' + minutes : minutes;
       return daylist[day] + ' ' + today.getDate() + ' ' + monthlist[today.getMonth()]
@@ -36,8 +38,29 @@
         }
     }
 
-    function setQuarter(selection){
-        if (selection.value == 1) {
+    function setQuarter(selection) {
+        var today = new Date();
+        var year = today.getFullYear();
+        var startMonth = 0;
+        var endMonth   = 2;
+        if (selection.value == 2) {
+            startMonth = 3;
+            endMonth   = 5;
+        } else if (selection.value == 3) {
+            startMonth = 6;
+            endMonth   = 8;
+        } else if (selection.value == 4) {
+            startMonth = 9;
+            endMonth   = 11;
+        }
+        var month = new Array(3);
+        var pos = 0;
+        for (i = startMonth; i <= endMonth; i++) {
+            month[pos] = monthlist[i] + ' ' + year;
+            pos++;
+        }
+        for (i = 0; i < 3; i++) {
+           $("#month" + i).val(month[i]);
         }
     }
 

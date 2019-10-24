@@ -31,7 +31,7 @@
             </thead>
             <tbody>
                 <tr th:each="vat, itemStat : *{vatList}">
-                    <td><input th:id="${itemStat.index}" th:field="*{vatList[__${itemStat.index}__].monthAndYear}" th:readonly="readonly" /></td>
+                    <td><input th:id="'month' + ${itemStat.index}" th:field="*{vatList[__${itemStat.index}__].monthAndYear}" th:readonly="readonly" /></td>
                     <!-- Maximum value of 31 days -->
                     <td><input th:field="*{vatList[__${itemStat.index}__].numberOfDays}" th:max="31" /></td>
                     <td><input th:field="*{vatList[__${itemStat.index}__].dailyRate}" class="text-right" /></td>
