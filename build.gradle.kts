@@ -69,6 +69,7 @@ dependencies {
 jib {
     to {
         image = "gcr.io/gke-cluster-121174/kotlin-vat-calc"
-        tags = setOf(project.version.toString(), "latest")
+        //tags = setOf(project.version.toString(), "latest")
+        tags = setOf("latest")
     }
 }
