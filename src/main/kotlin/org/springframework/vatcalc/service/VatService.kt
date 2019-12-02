@@ -44,7 +44,7 @@ class VatService {
         returnVatDetailsForm.currentQuarter = vatDetailsForm.currentQuarter
         returnVatDetailsForm.vatList = vatList
         returnVatDetailsForm.totalGrossAmount = "%.2f".format(totalGrossAmount)
-        returnVatDetailsForm.outputVat = "%.2f".format(totalGrossAmount * 0.175)
+        returnVatDetailsForm.outputVat = "%.2f".format(totalGrossAmount * 0.165)
 
         return returnVatDetailsForm
     }
