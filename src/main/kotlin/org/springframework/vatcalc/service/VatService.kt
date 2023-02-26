@@ -3,36 +3,36 @@ package org.springframework.vatcalc.service
 import org.springframework.stereotype.Service
 import org.springframework.vatcalc.vat.Vat
 import org.springframework.vatcalc.vat.VatDetailsForm
+import java.util.*
+import kotlin.collections.ArrayList
 
 @Service
 class VatService {
 
     fun createVatDetails(): VatDetailsForm {
-        var vatList: ArrayList<Vat> = ArrayList<Vat>()
-        vatList.add(Vat())
-        vatList.add(Vat())
-        vatList.add(Vat())
+        val vatList: ArrayList<Vat> = ArrayList()
+        Collections.addAll(vatList, Vat(), Vat(), Vat())
 
-        var vatDetailsForm = VatDetailsForm()
+        val vatDetailsForm = VatDetailsForm()
         vatDetailsForm.vatList = vatList
 
         return vatDetailsForm
     }
 
     fun calculateVat(vatDetailsForm: VatDetailsForm): VatDetailsForm {
-        var vatList: ArrayList<Vat> = ArrayList<Vat>()
+        val vatList: ArrayList<Vat> = ArrayList()
 
         var totalGrossAmount = 0.00
 
         vatDetailsForm.vatList?.forEach {
-            var vatRow = Vat()
+            val vatRow = Vat()
             vatRow.monthAndYear = it.monthAndYear
             vatRow.numberOfDays = it.numberOfDays
             vatRow.dailyRate    = it.dailyRate
-            var dailyRate       = it.dailyRate.toDouble();
-            var netAmount       = dailyRate * it.numberOfDays
-            var vatAmount       = netAmount * 0.20
-            var grossAmount     = netAmount + vatAmount
+            val dailyRate       = it.dailyRate.toDouble()
+            val netAmount       = dailyRate * it.numberOfDays
+            val vatAmount       = netAmount * 0.20
+            val grossAmount     = netAmount + vatAmount
             vatRow.netAmount    = "%.2f".format(netAmount)
             vatRow.vatAmount    = "%.2f".format(vatAmount)
             vatRow.grossAmount  = "%.2f".format(grossAmount)
@@ -40,7 +40,7 @@ class VatService {
             vatList.add(vatRow)
         }
 
-        var returnVatDetailsForm = VatDetailsForm()
+        val returnVatDetailsForm = VatDetailsForm()
         returnVatDetailsForm.currentQuarter = vatDetailsForm.currentQuarter
         returnVatDetailsForm.vatList = vatList
         returnVatDetailsForm.totalGrossAmount = "%.2f".format(totalGrossAmount)
